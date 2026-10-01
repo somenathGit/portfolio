@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+package-lock.json
+
+# Reference archives
+reference/
+
+# Operating System files
+.DS_Store
+Thumbs.db

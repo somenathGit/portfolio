@@ -1,0 +1,21 @@
+{
+  "name": "somenath-maity-portfolio",
+  "version": "2.0.0",
+  "description": "Next-Gen 3D Interactive Portfolio of Somenath Maity - Computer Science Scholar & AI Systems Researcher",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "threejs",
+    "web-audio",
+    "dark-mode",
+    "ai",
+    "healthcare-robotics",
+    "rag"
+  ],
+  "author": "Somenath Maity",
+  "license": "MIT"
+}

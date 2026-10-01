@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>Somenath Maity — CSE Student | Robotics & AI | Full-Stack Developer</title>
+  <meta name="title" content="Somenath Maity — CSE Student | Robotics & AI | Full-Stack Developer" />
+  <meta name="description" content="Third-year Computer Science & Engineering student at UEM Kolkata specializing in Robotics & Artificial Intelligence, building practical software and intelligent systems." />
+  <meta name="author" content="Somenath Maity" />
+  <meta name="keywords" content="Somenath Maity, Computer Science, Robotics, Artificial Intelligence, UEM Kolkata, Full-Stack Developer, RAG, Arduino, Software Engineering, Kolkata" />
+  
+  <!-- Canonical Placeholder & Favicon -->
+  <link rel="canonical" href="https://somenathmaity.netlify.app/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#07090e" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://somenathmaity.netlify.app/" />
+  <meta property="og:title" content="Somenath Maity — CSE Student | Robotics & AI | Full-Stack Developer" />
+  <meta property="og:description" content="Third-year Computer Science & Engineering student at UEM Kolkata specializing in Robotics & AI." />
+  <meta property="og:image" content="https://somenathmaity.netlify.app/assets/images/project-rag-robotics.jpg" />
+  <meta property="og:site_name" content="Somenath Maity Portfolio" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://somenathmaity.netlify.app/" />
+  <meta name="twitter:title" content="Somenath Maity — CSE Student | Robotics & AI | Full-Stack Developer" />
+  <meta name="twitter:description" content="Third-year Computer Science & Engineering student at UEM Kolkata specializing in Robotics & AI." />
+  <meta name="twitter:image" content="https://somenathmaity.netlify.app/assets/images/project-rag-robotics.jpg" />
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Somenath Maity",
+        "jobTitle": "Computer Science & Engineering Student",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Engineering & Management, Kolkata (UEM Kolkata)",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kolkata",
+            "addressCountry": "India"
+          }
+        },
+        "knowsAbout": [
+          "Robotics",
+          "Artificial Intelligence",
+          "Full-Stack Web Development",
+          "Data Structures & Algorithms",
+          "RAG Systems",
+          "Generative AI"
+        ],
+        "url": "https://somenathmaity.netlify.app/",
+        "sameAs": [
+          "https://github.com/somenathGit",
+          "https://www.linkedin.com/in/somenath-maity-147ab6324"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Somenath Maity Portfolio",
+        "url": "https://somenathmaity.netlify.app/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2.9" />
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#hero" class="skip-link">Skip to main content</a>
+
+  <!-- Reading Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress-line" aria-hidden="true"></div>
+
+  <!-- Background Ambience & Grid -->
+  <div class="bg-grid-layer" aria-hidden="true"></div>
+  <div class="bg-aurora-glow" aria-hidden="true"></div>
+
+  <!-- ====================================================================
+       NAVBAR (macOS Floating Navigation Bar)
+       ==================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <!-- Left: SM Geometric Monogram -->
+      <a href="#hero" class="brand-logo" aria-label="Somenath Maity — Return to top">
+        <span class="monogram-badge">SM</span>
+      </a>
+
+        <!-- Middle: Main Nav Links (macOS Segmented Capsule Control) -->
+        <nav aria-label="Primary Navigation" class="nav-menu-wrapper" id="nav-segmented-control">
+          <div class="nav-pill-indicator" id="nav-pill-indicator" aria-hidden="true"></div>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="#hero" class="nav-link active" data-nav="hero" aria-current="page">Home</a></li>
+            <li><a href="#about" class="nav-link" data-nav="about">About</a></li>
+            <li><a href="#skills" class="nav-link" data-nav="skills">Skills</a></li>
+            <li><a href="#projects" class="nav-link" data-nav="projects">Projects</a></li>
+            <li><a href="#education" class="nav-link" data-nav="education">Education</a></li>
+            <li><a href="#certifications" class="nav-link" data-nav="certifications">Certifications</a></li>
+            <li><a href="#contact" class="nav-link" data-nav="contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: Action Controls (Spotlight Search, GitHub, LinkedIn, Theme Toggle) -->
+        <div class="nav-actions">
+          <!-- Spotlight Search Trigger -->
+          <button id="cmd-palette-btn" class="nav-search-btn" aria-label="Open Spotlight Command Palette (Cmd+K)" title="Command Palette (Ctrl/Cmd + K)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span class="search-label">Search</span>
+            <kbd class="cmd-kbd">⌘K</kbd>
+          </button>
+
+          <!-- GitHub Link -->
+          <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub Profile (opens in new tab)" title="GitHub: somenathGit">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+
+          <!-- LinkedIn Link -->
+          <a href="https://www.linkedin.com/in/somenath-maity-147ab6324" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn Profile (opens in new tab)" title="LinkedIn: somenath-maity-147ab6324">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+
+          <!-- Theme Toggle (Dark / Light) -->
+          <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle Dark and Light theme" title="Toggle Theme (T)">
+            <!-- Sun icon (for dark mode) -->
+            <svg id="theme-sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon (for light mode) -->
+            <svg id="theme-moon-icon" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Mobile Menu Hamburger -->
+          <button id="mobile-menu-btn" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Wrap -->
+    <main id="main-content">
+      <!-- ====================================================================
+           01 — HERO SECTION (Engineering Profile & Digital Laboratory Studio)
+           ==================================================================== -->
+      <section id="hero" class="hero-section" aria-label="Profile Introduction">
+        <!-- Hero Subtle Technical Background Grid -->
+        <div class="hero-bg-grid" aria-hidden="true"></div>
+
+        <div class="hero-container">
+          <div class="hero-grid">
+            <!-- Left Side: Identity & Editorial Typography -->
+            <div class="hero-content">
+              <!-- Top Micro Bar: Section Label + System Status -->
+              <div class="hero-top-bar">
+                <span class="section-index hero-section-badge">01 — PROFILE</span>
+                <div class="hero-status-pill" role="status">
+                  <span class="status-dot"></span>
+                  <span>CURRENTLY BUILDING</span>
+                </div>
+              </div>
+
+              <!-- Main Personal Identity -->
+              <div class="hero-identity">
+                <h1 class="hero-name">Somenath Maity</h1>
+                <p class="hero-role-tag">
+                  <span>CSE Student</span>
+                  <span class="hero-sep" aria-hidden="true">/</span>
+                  <span>Robotics &amp; AI</span>
+                  <span class="hero-sep" aria-hidden="true">/</span>
+                  <span>Full-Stack Developer</span>
+                </p>
+              </div>
+
+              <!-- Core Emotional Hero Statement -->
+              <h2 class="hero-headline">
+                Building intelligent systems and practical digital experiences.
+              </h2>
+
+              <!-- Supporting Paragraph -->
+              <p class="hero-support-text">
+                I'm a third-year Computer Science &amp; Engineering student at the University of Engineering &amp; Management, Kolkata, focused on software development, artificial intelligence, robotics, and real-world problem solving.
+              </p>
+
+              <!-- Primary & Secondary Action Controls -->
+              <div class="hero-cta-group">
+                <a href="#projects" class="btn-primary hero-btn-explore magnetic-btn" data-magnetic>
+                  <span>Explore Projects</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <a href="assets/resume.pdf" class="btn-secondary hero-btn-resume magnetic-btn" id="resume-download-btn" target="_blank" rel="noopener" data-magnetic>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Download Resume</span>
+                </a>
+              </div>
+
+              <!-- Compact Tactile Social Links -->
+              <div class="hero-secondary-links">
+                <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="hero-social-btn" aria-label="GitHub Profile" title="GitHub: somenathGit">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/somenath-maity-147ab6324" target="_blank" rel="noopener noreferrer" class="hero-social-btn" aria-label="LinkedIn Profile" title="LinkedIn: somenath-maity-147ab6324">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=somenathmaity346@gmail.com" target="_blank" rel="noopener noreferrer" class="hero-social-btn" aria-label="Email" title="Email: somenathmaity346@gmail.com">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>Email</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Side: Interactive 3D Intelligence Core & Technical Stage -->
+            <div class="hero-visual-stage" aria-label="Interactive 3D Geometric Intelligence Core">
+              <!-- Ambient Studio Light Behind Core -->
+              <div class="hero-ambient-glow" aria-hidden="true"></div>
+
+              <!-- Canvas Container -->
+              <div id="three-hero-container" class="three-hero-container">
+                <canvas id="three-canvas"></canvas>
+
+                <!-- Elegant WebGL Fallback Graphic (active if WebGL is disabled or unavailable) -->
+                <div id="hero-webgl-fallback" class="hero-webgl-fallback" aria-hidden="true">
+                  <svg class="fallback-geometry" viewBox="0 0 300 300" fill="none">
+                    <circle cx="150" cy="150" r="120" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
+                    <circle cx="150" cy="150" r="85" stroke="rgba(245,158,11,0.25)" stroke-width="1.2" />
+                    <polygon points="150,45 240,97 240,203 150,255 60,203 60,97" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" />
+                    <polygon points="150,75 215,112 215,188 150,225 85,188 85,112" stroke="rgba(245,158,11,0.4)" stroke-width="1.5" />
+                    <line x1="60" y1="97" x2="240" y2="203" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+                    <line x1="240" y1="97" x2="60" y2="203" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+                    <line x1="150" y1="45" x2="150" y2="255" stroke="rgba(245,158,11,0.25)" stroke-width="1" />
+                    <circle cx="150" cy="150" r="6" fill="#f59e0b" />
+                    <circle cx="150" cy="45" r="3.5" fill="#f59e0b" />
+                    <circle cx="240" cy="97" r="3.5" fill="#f59e0b" />
+                    <circle cx="240" cy="203" r="3.5" fill="#f59e0b" />
+                    <circle cx="150" cy="255" r="3.5" fill="#f59e0b" />
+                    <circle cx="60" cy="203" r="3.5" fill="#f59e0b" />
+                    <circle cx="60" cy="97" r="3.5" fill="#f59e0b" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Technical Annotations (Engineering HUD details with leader lines) -->
+              <div class="tech-annotation annotation-top-left" aria-hidden="true">
+                <span class="annotation-code">SYS.01</span>
+                <span class="annotation-text">INTELLIGENCE CORE</span>
+                <span class="annotation-line"></span>
+              </div>
+              <div class="tech-annotation annotation-top-right" aria-hidden="true">
+                <span class="annotation-code">AI / RAG</span>
+                <span class="annotation-text">SEMANTIC RETRIEVAL</span>
+                <span class="annotation-line"></span>
+              </div>
+              <div class="tech-annotation annotation-bottom-left" aria-hidden="true">
+                <span class="annotation-code">ROBOTICS</span>
+                <span class="annotation-text">HARDWARE &amp; SENSORS</span>
+                <span class="annotation-line"></span>
+              </div>
+              <div class="tech-annotation annotation-bottom-right" aria-hidden="true">
+                <span class="annotation-code">STATUS</span>
+                <span class="annotation-text">● ACTIVE</span>
+                <span class="annotation-line"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Micro Scroll Indicator -->
+          <div class="hero-scroll-wrap">
+            <a href="#about" class="hero-scroll-indicator" aria-label="Scroll to explore profile">
+              <span class="scroll-track">
+                <span class="scroll-bar"></span>
+              </span>
+              <span class="scroll-label">SCROLL TO EXPLORE</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    <!-- ====================================================================
+         01 — ABOUT SECTION (Engineering Profile)
+         ==================================================================== -->
+    <section id="about" class="section-container" aria-labelledby="about-title">
+      <div class="section-header">
+        <span class="section-index">01 — ABOUT</span>
+        <h2 id="about-title" class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          Third-year CSE student specializing in Robotics &amp; AI at UEM Kolkata, building practical intelligent systems.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text-content">
+          <p>
+            I am a third-year <span class="highlight-term">Computer Science &amp; Engineering</span> undergraduate specializing in <span class="highlight-term">Robotics &amp; Artificial Intelligence</span> at the <span class="highlight-term">University of Engineering &amp; Management, Kolkata (UEM Kolkata)</span>, with an expected graduation in 2028.
+          </p>
+          <p>
+            My work centers on software development, artificial intelligence, robotics, and real-world problem solving. I am passionate about translating algorithmic concepts and modern AI architectures into tangible, dependable software and physical robotic prototypes.
+          </p>
+          <p>
+            Whether engineering full-stack digital platforms, exploring Retrieval-Augmented Generation (RAG) paradigms, or integrating microcontrollers with sensors and actuators, I focus on disciplined foundations, clean modular architecture, and verifiable real-world projects.
+          </p>
+        </div>
+
+        <!-- Engineering Philosophy Area: LEARN -> BUILD -> TEST -> IMPROVE -->
+        <div class="philosophy-panel">
+          <div class="philosophy-header">
+            <span class="toolbar-dot-mini dot-close"></span>
+            <span class="toolbar-dot-mini dot-min"></span>
+            <span class="toolbar-dot-mini dot-zoom"></span>
+            <span style="margin-left: 6px;">Engineering Philosophy</span>
+          </div>
+          <div class="philosophy-steps">
+            <div class="philosophy-step-item">
+              <span class="step-num">01</span>
+              <div>
+                <div class="step-title">LEARN</div>
+                <p class="step-desc">Master foundational concepts across algorithms, system architecture, and robotics principles from first principles.</p>
+              </div>
+            </div>
+
+            <div class="philosophy-step-item">
+              <span class="step-num">02</span>
+              <div>
+                <div class="step-title">BUILD</div>
+                <p class="step-desc">Translate ideas into functioning prototypes, real hardware circuits, and clean modular codebases.</p>
+              </div>
+            </div>
+
+            <div class="philosophy-step-item">
+              <span class="step-num">03</span>
+              <div>
+                <div class="step-title">TEST</div>
+                <p class="step-desc">Stress-test boundaries, measure performance constraints, and eliminate errors through rigorous verification.</p>
+              </div>
+            </div>
+
+            <div class="philosophy-step-item">
+              <span class="step-num">04</span>
+              <div>
+                <div class="step-title">IMPROVE</div>
+                <p class="step-desc">Iteratively optimize efficiency, refactor architectural bottlenecks, and adapt to modern engineering standards.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         02 — SKILLS SECTION (Technology Matrix)
+         ==================================================================== -->
+    <section id="skills" class="section-container" aria-labelledby="skills-title">
+      <div class="section-header">
+        <span class="section-index">02 — TECHNOLOGY</span>
+        <h2 id="skills-title" class="section-title">Skills &amp; Technologies</h2>
+        <p class="section-subtitle">
+          Core engineering competencies and technical stacks organized across programming, web systems, AI, robotics, and developer tooling.
+        </p>
+      </div>
+
+      <!-- Category Filter Navigation -->
+      <div class="skills-filter-nav" role="tablist" aria-label="Skills Category Filter">
+        <button class="filter-btn active" data-skill="all" role="tab" aria-selected="true">All Domains</button>
+        <button class="filter-btn" data-skill="programming" role="tab" aria-selected="false">Languages</button>
+        <button class="filter-btn" data-skill="web" role="tab" aria-selected="false">Web Systems</button>
+        <button class="filter-btn" data-skill="ai" role="tab" aria-selected="false">AI / ML</button>
+        <button class="filter-btn" data-skill="robotics" role="tab" aria-selected="false">Robotics</button>
+        <button class="filter-btn" data-skill="tools" role="tab" aria-selected="false">Tools</button>
+      </div>
+
+      <!-- Category Cards Grid (System Component Modules) -->
+      <div class="skills-grid">
+        <!-- Programming Languages -->
+        <div class="skill-category-card" data-domain="programming">
+          <div class="category-header">
+            <div class="category-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>Languages</span>
+            </div>
+            <span class="category-count">6 Technologies</span>
+          </div>
+          <div class="badge-cloud">
+            <span class="tech-badge">C</span>
+            <span class="tech-badge">C++</span>
+            <span class="tech-badge">Java</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">JavaScript</span>
+            <span class="tech-badge">SQL</span>
+          </div>
+        </div>
+
+        <!-- Web Systems -->
+        <div class="skill-category-card" data-domain="web">
+          <div class="category-header">
+            <div class="category-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <span>Web Systems</span>
+            </div>
+            <span class="category-count">5 Competencies</span>
+          </div>
+          <div class="badge-cloud">
+            <span class="tech-badge">HTML5</span>
+            <span class="tech-badge">CSS3</span>
+            <span class="tech-badge">JavaScript (ES6+)</span>
+            <span class="tech-badge">Frontend Architecture</span>
+            <span class="tech-badge">Full-Stack Development</span>
+          </div>
+        </div>
+
+        <!-- AI / ML -->
+        <div class="skill-category-card" data-domain="ai">
+          <div class="category-header">
+            <div class="category-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+              <span>AI &amp; Machine Learning</span>
+            </div>
+            <span class="category-count">4 Domains</span>
+          </div>
+          <div class="badge-cloud">
+            <span class="tech-badge">Artificial Intelligence</span>
+            <span class="tech-badge">Generative AI</span>
+            <span class="tech-badge">RAG Systems</span>
+            <span class="tech-badge">Machine Learning</span>
+          </div>
+        </div>
+
+        <!-- Robotics -->
+        <div class="skill-category-card" data-domain="robotics">
+          <div class="category-header">
+            <div class="category-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span>Robotics &amp; Automation</span>
+            </div>
+            <span class="category-count">6 Focus Areas</span>
+          </div>
+          <div class="badge-cloud">
+            <span class="tech-badge">Robotics</span>
+            <span class="tech-badge">ROS</span>
+            <span class="tech-badge">Gazebo Simulation</span>
+            <span class="tech-badge">Arduino Mega</span>
+            <span class="tech-badge">Sensors Integration</span>
+            <span class="tech-badge">Hardware Automation</span>
+          </div>
+        </div>
+
+        <!-- Developer Tools -->
+        <div class="skill-category-card" data-domain="tools">
+          <div class="category-header">
+            <div class="category-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              <span>Developer Tools</span>
+            </div>
+            <span class="category-count">3 Daily Drivers</span>
+          </div>
+          <div class="badge-cloud">
+            <span class="tech-badge">Git</span>
+            <span class="tech-badge">GitHub</span>
+            <span class="tech-badge">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         03 — SELECTED WORK (Projects Showcase)
+         ==================================================================== -->
+    <section id="projects" class="section-container" aria-labelledby="projects-title">
+      <div class="section-header">
+        <span class="section-index">03 — SELECTED WORK</span>
+        <h2 id="projects-title" class="section-title">Projects</h2>
+        <p class="section-subtitle">
+          Projects where software, AI, robotics, and problem solving come together.
+        </p>
+      </div>
+
+      <!-- Project Category Filter Pills -->
+      <div class="projects-filter-nav" role="tablist" aria-label="Project Category Filter">
+        <button class="project-filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="project-filter-btn" data-filter="robotics" role="tab" aria-selected="false">Robotics</button>
+        <button class="project-filter-btn" data-filter="ai" role="tab" aria-selected="false">AI</button>
+        <button class="project-filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
+        <button class="project-filter-btn" data-filter="dsa" role="tab" aria-selected="false">DSA</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- PROJECT 01: Intelligent Solar Panel Cleaning Robot (Flagship Horizontal Showcase) -->
+        <article class="project-window-card project-window-card--featured-hero" data-domain="robotics" data-modal="solar-cleaner">
+          <!-- macOS Window Toolbar -->
+          <div class="window-toolbar">
+            <div class="window-controls" aria-hidden="true">
+              <span class="control-dot dot-close"></span>
+              <span class="control-dot dot-min"></span>
+              <span class="control-dot dot-zoom"></span>
+            </div>
+            <div class="window-titlebar">app.01 — solar-cleaner.app</div>
+            <span class="window-tag">Robotics / Automation</span>
+          </div>
+
+          <!-- Preview Media -->
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-solar-cleaner.jpg" alt="Autonomous Solar Panel Cleaning Robot" class="project-thumb" loading="lazy" />
+            <div class="project-thumb-overlay"></div>
+            <span class="project-meta-pill">FLAGSHIP CASE STUDY</span>
+          </div>
+
+          <!-- Window Content Body -->
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-idx">PROJECT 01</span>
+              <span class="project-status-chip">Autonomous Hardware</span>
+            </div>
+            <h3 class="project-card-title">Intelligent Solar Panel Cleaning Robot</h3>
+            <p class="project-desc">
+              An automated robotic system designed to reduce manual solar-panel maintenance through mechanical cleaning and sensor-based navigation.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tag">Arduino Mega</span>
+              <span class="project-tag">DC Motor</span>
+              <span class="project-tag">Motor Driver</span>
+              <span class="project-tag">Ultrasonic Sensor</span>
+              <span class="project-tag">Bluetooth</span>
+              <span class="project-tag">Battery</span>
+            </div>
+            <div class="project-footer-actions">
+              <button class="btn-project-details" data-modal="solar-cleaner" aria-label="Open Intelligent Solar Panel Cleaning Robot details window">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <span>View Details</span>
+              </button>
+              <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="btn-project-link" aria-label="View source code on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 02: RAG-Based Clinical Robotic Assistant (Large Visual + Information) -->
+        <article class="project-window-card" data-domain="ai" data-modal="rag-clinical">
+          <!-- macOS Window Toolbar -->
+          <div class="window-toolbar">
+            <div class="window-controls" aria-hidden="true">
+              <span class="control-dot dot-close"></span>
+              <span class="control-dot dot-min"></span>
+              <span class="control-dot dot-zoom"></span>
+            </div>
+            <div class="window-titlebar">app.02 — clinical-assistant.app</div>
+            <span class="window-tag">AI / Robotics</span>
+          </div>
+
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-rag-robotics.jpg" alt="RAG Clinical Robotic Assistant Concept" class="project-thumb" loading="lazy" />
+            <div class="project-thumb-overlay"></div>
+            <span class="project-meta-pill">AI / ROBOTICS</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-idx">PROJECT 02</span>
+              <span class="project-status-chip">Intelligent RAG Concept</span>
+            </div>
+            <h3 class="project-card-title">RAG-Based Clinical Robotic Assistant</h3>
+            <p class="project-desc">
+              A project exploring Retrieval-Augmented Generation for intelligent robotic assistants that retrieve relevant knowledge before generating responses.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tag">RAG</span>
+              <span class="project-tag">Generative AI</span>
+              <span class="project-tag">AI</span>
+              <span class="project-tag">Robotics</span>
+            </div>
+            <div class="project-footer-actions">
+              <button class="btn-project-details" data-modal="rag-clinical" aria-label="Open RAG-Based Clinical Robotic Assistant details window">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <span>View Details</span>
+              </button>
+              <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="btn-project-link" aria-label="View source code on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 03: Generative AI Showcase (Split Layout) -->
+        <article class="project-window-card" data-domain="ai" data-modal="genai-showcase">
+          <!-- macOS Window Toolbar -->
+          <div class="window-toolbar">
+            <div class="window-controls" aria-hidden="true">
+              <span class="control-dot dot-close"></span>
+              <span class="control-dot dot-min"></span>
+              <span class="control-dot dot-zoom"></span>
+            </div>
+            <div class="window-titlebar">app.03 — genai-showcase.app</div>
+            <span class="window-tag">Generative AI</span>
+          </div>
+
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-genai-showcase.jpg" alt="Generative AI Interface Showcase" class="project-thumb" loading="lazy" />
+            <div class="project-thumb-overlay"></div>
+            <span class="project-meta-pill">GENERATIVE AI</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-idx">PROJECT 03</span>
+              <span class="project-status-chip">Creative Systems</span>
+            </div>
+            <h3 class="project-card-title">Generative AI Showcase</h3>
+            <p class="project-desc">
+              Experiments exploring practical generative-AI workflows, interfaces, and applications.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tag">Generative AI</span>
+              <span class="project-tag">Diffusion Models</span>
+              <span class="project-tag">Prompt Engineering</span>
+              <span class="project-tag">Interface Design</span>
+            </div>
+            <div class="project-footer-actions">
+              <button class="btn-project-details" data-modal="genai-showcase" aria-label="Open Generative AI Showcase details window">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <span>View Details</span>
+              </button>
+              <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="btn-project-link" aria-label="View source code on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 04: Algorithmic Engineering (Technical Grid) -->
+        <article class="project-window-card" data-domain="dsa" data-modal="algorithms">
+          <!-- macOS Window Toolbar -->
+          <div class="window-toolbar">
+            <div class="window-controls" aria-hidden="true">
+              <span class="control-dot dot-close"></span>
+              <span class="control-dot dot-min"></span>
+              <span class="control-dot dot-zoom"></span>
+            </div>
+            <div class="window-titlebar">app.04 — algorithmic-core.app</div>
+            <span class="window-tag">DSA</span>
+          </div>
+
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-algorithms.jpg" alt="Algorithmic Engineering Code & Graph" class="project-thumb" loading="lazy" />
+            <div class="project-thumb-overlay"></div>
+            <span class="project-meta-pill">DSA / SYSTEMS</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-idx">PROJECT 04</span>
+              <span class="project-status-chip">Computational Foundations</span>
+            </div>
+            <h3 class="project-card-title">Algorithmic Engineering</h3>
+            <p class="project-desc">
+              Data structures and algorithm implementations focused on efficient problem solving and computational thinking.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tag">C++</span>
+              <span class="project-tag">Java</span>
+              <span class="project-tag">DSA</span>
+              <span class="project-tag">Algorithms</span>
+            </div>
+            <div class="project-footer-actions">
+              <button class="btn-project-details" data-modal="algorithms" aria-label="Open Algorithmic Engineering details window">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <span>View Details</span>
+              </button>
+              <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="btn-project-link" aria-label="View source code on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 05: Farmer-Focused Real-World Digital Platform (KrishiOne) -->
+        <article class="project-window-card" data-domain="web" data-modal="krishione">
+          <!-- macOS Window Toolbar -->
+          <div class="window-toolbar">
+            <div class="window-controls" aria-hidden="true">
+              <span class="control-dot dot-close"></span>
+              <span class="control-dot dot-min"></span>
+              <span class="control-dot dot-zoom"></span>
+            </div>
+            <div class="window-titlebar">app.05 — krishione-platform.app</div>
+            <span class="window-tag">Web / Agritech</span>
+          </div>
+
+          <div class="project-thumb-wrap">
+            <img src="assets/images/project-krishione.jpg" alt="Farmer-Focused Real-World Digital Platform Interface" class="project-thumb" loading="lazy" />
+            <div class="project-thumb-overlay"></div>
+            <span class="project-meta-pill">AGRITECH / FULL-STACK</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-header-row">
+              <span class="project-idx">APP 05</span>
+              <span class="project-status-chip">Real-World Software</span>
+            </div>
+            <h3 class="project-card-title">Farmer-Focused Real-World Digital Platform</h3>
+            <p class="project-desc">
+              A comprehensive digital operating system engineered for agricultural telemetry, soil sensor monitoring, and intelligent crop management.
+            </p>
+            <div class="project-tech-tags">
+              <span class="project-tag">Full-Stack Web</span>
+              <span class="project-tag">IoT Telemetry</span>
+              <span class="project-tag">Sensors Integration</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-footer-actions">
+              <button class="btn-project-details" data-modal="krishione" aria-label="Open Farmer-Focused Real-World Digital Platform details window">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <span>View Details</span>
+              </button>
+              <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="btn-project-link" aria-label="View source code on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         04 — EDUCATION SECTION
+         ==================================================================== -->
+    <section id="education" class="section-container" aria-labelledby="education-title">
+      <div class="section-header">
+        <span class="section-index">04 — EDUCATION</span>
+        <h2 id="education-title" class="section-title">Education</h2>
+        <p class="section-subtitle">
+          Formal academic foundation in Computer Science &amp; Engineering.
+        </p>
+      </div>
+
+      <div class="education-card">
+        <div class="education-header">
+          <div>
+            <h3 class="institution-name">University of Engineering &amp; Management, Kolkata</h3>
+            <p class="degree-title">B.Tech in Computer Science &amp; Engineering</p>
+          </div>
+          <span class="education-period-badge">Expected Graduation: 2028</span>
+        </div>
+
+        <div class="education-details">
+          <div class="education-details-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <span><strong>Specialization:</strong> Robotics &amp; Artificial Intelligence</span>
+          </div>
+          <div class="education-details-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <span><strong>Current Status:</strong> Third Year</span>
+          </div>
+          <div class="education-details-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <span><strong>Core Focus:</strong> Robotics systems, autonomous controllers, Artificial Intelligence fundamentals, Data Structures &amp; Algorithms, and Object-Oriented Software Design.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         05 — CERTIFICATIONS
+         ==================================================================== -->
+    <section id="certifications" class="section-container" aria-labelledby="certifications-title">
+      <div class="section-header">
+        <span class="section-index">05 — CREDENTIALS</span>
+        <h2 id="certifications-title" class="section-title">Certifications</h2>
+        <p class="section-subtitle">
+          Completed university coursework and technical learning across security, systems, and information theory.
+        </p>
+      </div>
+
+      <div class="cert-grid">
+        <!-- Cert 1 — Has Real Certificate -->
+        <div class="cert-card cert-card--has-cert" 
+             id="cert-cyber-fundamentals"
+             data-cert-title="Cyber Security Fundamentals"
+             data-cert-provider="Coursera"
+             data-cert-university="University of London"
+             data-cert-pdf="assets/certificates/coursera-cyber-security-fundamentals.pdf"
+             data-cert-url="https://1drv.ms/b/c/5eb2f64109d02186/IQDLA_rohCGTSZhnuU1SweZAAaR7zC0MixPCdgDs-KTc_H0?e=ADnVUo"
+             role="button"
+             tabindex="0"
+             aria-label="View certificate: Cyber Security Fundamentals">
+          <div class="cert-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="cert-title">Cyber Security Fundamentals</h3>
+          <p class="cert-issuer">Coursera — University of London</p>
+          <span class="cert-link-btn cert-link-btn--status">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>Verified Coursework</span>
+          </span>
+          <span class="cert-view-action">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>View Certificate</span>
+            <svg class="cert-view-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+        </div>
+
+        <!-- Cert 2 — Has Real Certificate -->
+        <div class="cert-card cert-card--has-cert" 
+             id="cert-adv-security"
+             data-cert-title="Advanced System Security Topics"
+             data-cert-provider="Coursera"
+             data-cert-university="University of Colorado"
+             data-cert-pdf="assets/certificates/coursera-advanced-system-security.pdf"
+             data-cert-url="https://1drv.ms/b/c/5eb2f64109d02186/IQB6rp_hD_9fTbTIBxGm4B7qAXNJK4xIlXwAoLzBC4ZAVjQ?e=fxXfWs"
+             role="button"
+             tabindex="0"
+             aria-label="View certificate: Advanced System Security Topics">
+          <div class="cert-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3 class="cert-title">Advanced System Security Topics</h3>
+          <p class="cert-issuer">Coursera — University of Colorado</p>
+          <span class="cert-link-btn cert-link-btn--status">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>Verified Coursework</span>
+          </span>
+          <span class="cert-view-action">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>View Certificate</span>
+            <svg class="cert-view-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="cert-card">
+          <div class="cert-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          </div>
+          <h3 class="cert-title">Information Theory</h3>
+          <p class="cert-issuer">Coursera — The Chinese University of Hong Kong</p>
+          <span class="cert-link-btn" title="Credential link can be added">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>Verified Coursework</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         07 — SYSTEM CONNECTION (Contact & Engineering Collaboration Console)
+         ==================================================================== -->
+    <section id="contact" class="section-container system-connection-section" aria-labelledby="contact-title">
+      <!-- Section Intro Header -->
+      <div class="section-header system-connection-header">
+        <div class="system-connection-badge-row">
+          <span class="section-index">07 — SYSTEM CONNECTION</span>
+          <span class="system-status-indicator" role="status">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">SECURE CHANNEL READY</span>
+          </span>
+        </div>
+        <h2 id="contact-title" class="section-title system-connection-headline">
+          Let’s turn ideas into <span class="gradient-accent-text">working systems.</span>
+        </h2>
+        <p class="section-subtitle system-connection-sub">
+          Have an interesting idea, technical opportunity, project, or collaboration in mind?
+          Let’s start with a conversation.
+        </p>
+      </div>
+
+      <!-- Main Asymmetric Grid -->
+      <div class="system-connection-grid">
+        <!-- PRIMARY COLUMN: Communication Console -->
+        <div class="comm-console-wrapper">
+          <div class="comm-console">
+            <!-- Console Topbar -->
+            <div class="comm-console-topbar">
+              <div class="comm-console-id">
+                <span class="terminal-traffic-lights" aria-hidden="true">
+                  <span class="light red"></span>
+                  <span class="light yellow"></span>
+                  <span class="light green"></span>
+                </span>
+                <span class="comm-console-title">COMMUNICATION CONSOLE</span>
+              </div>
+              <div class="comm-console-status">
+                <span class="channel-dot"></span>
+                <span id="console-status-text">Channel available</span>
+              </div>
+            </div>
+
+            <!-- Context Selector Chips -->
+            <div class="console-context-block">
+              <div class="console-label-row">
+                <span class="console-label">WHAT ARE WE CONNECTING ABOUT?</span>
+                <span class="context-selected-indicator" id="context-display-tag">SOFTWARE</span>
+              </div>
+              <div class="context-chips-group" role="group" aria-label="Select connection context">
+                <button type="button" class="context-chip active" data-context="SOFTWARE">SOFTWARE</button>
+                <button type="button" class="context-chip" data-context="AI / GENAI">AI / GENAI</button>
+                <button type="button" class="context-chip" data-context="ROBOTICS">ROBOTICS</button>
+                <button type="button" class="context-chip" data-context="RAG">RAG</button>
+                <button type="button" class="context-chip" data-context="WEB DEVELOPMENT">WEB DEVELOPMENT</button>
+                <button type="button" class="context-chip" data-context="COLLABORATION">COLLABORATION</button>
+                <button type="button" class="context-chip" data-context="INTERNSHIP">INTERNSHIP</button>
+              </div>
+            </div>
+
+            <!-- Project Interest Selector -->
+            <div class="console-project-block">
+              <div class="console-label-row">
+                <span class="console-label">PROJECT INTEREST</span>
+                <span class="console-sub-label">OPTIONAL CONTEXT</span>
+              </div>
+              <div class="project-interest-select-wrap">
+                <select id="project-interest-select" class="project-interest-select" aria-label="Optional portfolio project context">
+                  <option value="none">Select related portfolio project (optional)...</option>
+                  <option value="Intelligent Solar Panel Cleaning Robot">Intelligent Solar Panel Cleaning Robot</option>
+                  <option value="RAG-Based Clinical Robotic Assistant">RAG-Based Clinical Robotic Assistant</option>
+                  <option value="Generative AI Showcase">Generative AI Showcase</option>
+                  <option value="Algorithmic Engineering Core">Algorithmic Engineering Core</option>
+                  <option value="Farmer-Focused Digital Platform">Farmer-Focused Digital Platform (KrishiOne)</option>
+                  <option value="Something New / Custom">Something New / Custom System</option>
+                </select>
+                <div class="select-arrow" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Body -->
+            <form id="contact-form" class="comm-console-form" action="https://formsubmit.co/0606edeaaa99fea44590ba17d9c4ada5" method="POST" novalidate>
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" id="form-domain" name="domain" value="SOFTWARE" />
+              <div class="console-fields-grid">
+                <!-- Field: Identity -->
+                <div class="console-field-group">
+                  <div class="field-meta">
+                    <label class="field-label" for="contact-name">IDENTITY</label>
+                    <span class="field-status-hint">NAME</span>
+                  </div>
+                  <div class="field-input-wrap">
+                    <input type="text" id="contact-name" name="name" class="console-input" placeholder="Your Name or Organisation" required />
+                    <span class="input-focus-line"></span>
+                  </div>
+                </div>
+
+                <!-- Field: Contact -->
+                <div class="console-field-group">
+                  <div class="field-meta">
+                    <label class="field-label" for="contact-email">CONTACT</label>
+                    <span class="field-status-hint">EMAIL</span>
+                  </div>
+                  <div class="field-input-wrap">
+                    <input type="email" id="contact-email" name="email" class="console-input" placeholder="your.email@domain.com" required />
+                    <span class="input-focus-line"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Field: Topic -->
+              <div class="console-field-group">
+                <div class="field-meta">
+                  <label class="field-label" for="contact-topic">TOPIC</label>
+                  <span class="field-status-hint">SUBJECT</span>
+                </div>
+                <div class="field-input-wrap">
+                  <input type="text" id="contact-topic" name="topic" class="console-input" placeholder="What would you like to discuss or build?" />
+                  <span class="input-focus-line"></span>
+                </div>
+              </div>
+
+              <!-- Field: Message Composition -->
+              <div class="console-field-group">
+                <div class="field-meta">
+                  <label class="field-label" for="contact-message">MESSAGE COMPOSITION</label>
+                  <span class="char-counter" id="char-counter">0/2000</span>
+                </div>
+                <div class="field-input-wrap textarea-wrap">
+                  <textarea id="contact-message" name="message" class="console-input console-textarea" rows="5" maxlength="2000" placeholder="Tell me about your idea, technical problem, or project opportunity..." required></textarea>
+                  <span class="input-focus-line"></span>
+                </div>
+              </div>
+
+              <!-- Console Actions Bar -->
+              <div class="console-actions-bar">
+                <button type="submit" id="initiate-connection-btn" class="send-message-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="send-icon" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                  <span class="btn-text">SEND MESSAGE</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Success State Panel (Hidden by default, shown when sent) -->
+            <div id="connection-success-state" class="connection-success-state" style="display: none;" role="status">
+              <div class="success-status-badge">
+                <span class="success-dot"></span>
+                <span>MESSAGE SENT DIRECTLY</span>
+              </div>
+              <h4 class="success-headline">Thank you! Your message has been sent.</h4>
+              <p class="success-copy">
+                Your message has been delivered directly to Somenath Maity's Gmail inbox (<span style="color: var(--accent);">somenathmaity346@gmail.com</span>). Somenath will review your message and reply personally.
+              </p>
+              <div class="success-action-group">
+                <button type="button" id="reset-connection-btn" class="send-message-btn" style="max-width: 280px; margin: 0 auto;">
+                  <span>SEND ANOTHER MESSAGE</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION CLOSING SIGN-OFF STATEMENT -->
+      <div class="connection-section-closing">
+        <p class="closing-statement">“Every interesting system starts with a first connection.”</p>
+        <div class="closing-identity-tag">
+          <span class="closing-name">SOMENATH MAITY</span>
+          <span class="closing-dot">•</span>
+          <span class="closing-disciplines">CSE • ROBOTICS &amp; AI • FULL-STACK</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       18 & 19 — ENGINEERING FOOTER (Reference-Inspired 3-Column Layout)
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top-grid">
+        <!-- COLUMN 1: Personal Brand & Monogram -->
+        <div class="footer-col footer-col--brand">
+          <div class="footer-brand-header">
+            <div class="footer-monogram" aria-hidden="true">SM</div>
+            <div>
+              <h3 class="footer-brand-name">Somenath Maity</h3>
+              <p class="footer-brand-sub">CSE Student • Robotics &amp; AI</p>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            Building practical software, intelligent systems, and robotics solutions for real-world problems.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://github.com/somenathGit" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub Profile" title="GitHub: somenathGit">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/somenath-maity-147ab6324" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn Profile" title="LinkedIn: somenath-maity-147ab6324">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=somenathmaity346@gmail.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Email somenathmaity346@gmail.com" title="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: Navigation Links -->
+        <div class="footer-col footer-col--nav">
+          <h4 class="footer-col-heading">NAVIGATION</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 3: Areas of Focus -->
+        <div class="footer-col footer-col--focus">
+          <h4 class="footer-col-heading">AREAS OF FOCUS</h4>
+          <ul class="footer-focus-list">
+            <li>Full-Stack Development</li>
+            <li>Artificial Intelligence</li>
+            <li>Generative AI &amp; RAG</li>
+            <li>Robotics &amp; Automation</li>
+            <li>Data Structures &amp; Algorithms</li>
+            <li>Software Engineering</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM BAR (Section 19) -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-copy">
+          &copy; 2026 Somenath Maity. All rights reserved.
+        </div>
+        <div class="footer-bottom-tech">
+          Built with Vanilla HTML5, Modern CSS3, JavaScript (ES6+), and Three.js.
+        </div>
+        <div class="footer-bottom-back-top">
+          <a href="#hero" class="back-to-top-btn" aria-label="Back to Top">
+            <span>Back to Top</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ====================================================================
+       MACOS-INSPIRED PROJECT WINDOW MODAL (Application Window System)
+       ==================================================================== -->
+  <div id="project-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog window-modal-dialog">
+      <!-- Window Chrome Toolbar with Traffic Lights -->
+      <div class="modal-window-toolbar">
+        <div class="window-controls" aria-hidden="true">
+          <button id="modal-close-dot" class="control-dot dot-close" aria-label="Close project window"></button>
+          <span class="control-dot dot-min"></span>
+          <button id="modal-zoom-dot" class="control-dot dot-zoom" aria-label="Toggle window size"></button>
+        </div>
+        <div class="modal-window-title" id="modal-window-title">application.app</div>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close project details modal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-inner-scroll">
+        <div class="modal-media-wrap">
+          <img id="modal-img" src="" alt="Project Visual" class="modal-media-img" />
+          <span id="modal-category" class="modal-category-badge"></span>
+        </div>
+
+        <h3 id="modal-title" class="modal-title"></h3>
+        <p id="modal-desc" class="modal-desc"></p>
+
+        <div class="modal-section-title">Technologies Used</div>
+        <div id="modal-tags" class="project-tech-tags" style="margin-bottom: 1.5rem;"></div>
+
+        <div class="modal-section-title">Key Architectural Features</div>
+        <ul id="modal-features" class="modal-features-list"></ul>
+
+        <div class="modal-footer-btns">
+          <a id="modal-github-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" style="flex: 1; justify-content: center;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>View on GitHub</span>
+          </a>
+          <a id="modal-demo-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="flex: 1; justify-content: center;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Documentation / Details</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MACOS SPOTLIGHT / COMMAND PALETTE (CMD/CTRL + K)
+       ==================================================================== -->
+  <div id="cmd-palette-modal" class="cmd-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cmd-palette-title">
+    <div class="cmd-dialog">
+      <!-- Search Input Header -->
+      <div class="cmd-input-row">
+        <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmd-input" class="cmd-input" placeholder="Search commands, projects, skills, sections..." autocomplete="off" spellcheck="false" aria-label="Command search query" />
+        <button id="cmd-esc-btn" class="cmd-esc-badge" aria-label="Close command palette">ESC</button>
+      </div>
+
+      <!-- Live Search Results List -->
+      <div class="cmd-results" id="cmd-results" role="listbox" aria-label="Search suggestions">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Footer Bar with Shortcut Hints -->
+      <div class="cmd-footer">
+        <div class="cmd-footer-shortcuts">
+          <span class="cmd-hint-item"><kbd class="cmd-mini-kbd">↑</kbd><kbd class="cmd-mini-kbd">↓</kbd> Navigate</span>
+          <span class="cmd-hint-item"><kbd class="cmd-mini-kbd">↵</kbd> Select</span>
+          <span class="cmd-hint-item"><kbd class="cmd-mini-kbd">ESC</kbd> Close</span>
+          <span class="cmd-hint-item"><kbd class="cmd-mini-kbd">G</kbd> then <kbd class="cmd-mini-kbd">P</kbd> Projects</span>
+          <span class="cmd-hint-item"><kbd class="cmd-mini-kbd">T</kbd> Theme</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       CERTIFICATE VIEWER MODAL (macOS-Style)
+       ==================================================================== -->
+  <div class="cert-modal-overlay" id="cert-modal-overlay" aria-hidden="true">
+    <div class="cert-modal" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+
+      <!-- macOS Window Chrome Toolbar -->
+      <div class="cert-modal-toolbar">
+        <div class="cert-modal-traffic-lights">
+          <button class="cert-modal-close-dot" id="cert-modal-close" aria-label="Close certificate viewer" title="Close">
+            <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="cert-modal-toolbar-center">
+          <span class="cert-modal-toolbar-title" id="cert-modal-title">Advanced System Security Topics</span>
+          <span class="cert-modal-status-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified Certificate</span>
+          </span>
+        </div>
+        <div class="cert-modal-toolbar-actions">
+          <a class="cert-modal-open-btn cert-modal-open-btn--local" id="cert-modal-open-local" href="assets/certificates/coursera-advanced-system-security.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF directly" title="Open local PDF file">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+            <span>Open PDF</span>
+          </a>
+          <a class="cert-modal-open-btn" id="cert-modal-open-original" href="https://1drv.ms/b/c/5eb2f64109d02186/IQB6rp_hD_9fTbTIBxGm4B7qAXNJK4xIlXwAoLzBC4ZAVjQ?e=fxXfWs" target="_blank" rel="noopener noreferrer" aria-label="Open original certificate in OneDrive" title="Open original on OneDrive">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Open Original</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Certificate Content Area (Local PDF) -->
+      <div class="cert-modal-body">
+        <!-- Direct PDF Viewer -->
+        <div class="cert-modal-embed-area" id="cert-modal-embed-area">
+          <iframe id="cert-modal-iframe" class="cert-modal-iframe" title="Certificate Preview"></iframe>
+        </div>
+
+        <!-- Fallback State -->
+        <div class="cert-modal-fallback" id="cert-modal-fallback" style="display:none;">
+          <div class="cert-modal-fallback-icon">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+          </div>
+          <h4 class="cert-modal-fallback-title" id="cert-modal-fallback-heading">Advanced System Security Topics</h4>
+          <p class="cert-modal-fallback-sub" id="cert-modal-fallback-sub">Coursera — University of Colorado</p>
+          <p class="cert-modal-fallback-text">If inline PDF preview is not supported by your browser, open it directly:</p>
+          <div class="cert-modal-fallback-actions">
+            <a class="cert-modal-fallback-btn cert-modal-fallback-btn--local" id="cert-modal-fallback-local-link" href="assets/certificates/coursera-advanced-system-security.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+              <span>Open Local PDF</span>
+            </a>
+            <a class="cert-modal-fallback-btn cert-modal-fallback-btn--original" id="cert-modal-fallback-link" href="https://1drv.ms/b/c/5eb2f64109d02186/IQB6rp_hD_9fTbTIBxGm4B7qAXNJK4xIlXwAoLzBC4ZAVjQ?e=fxXfWs" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>Open Original (OneDrive)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate Metadata Footer -->
+      <div class="cert-modal-footer">
+        <div class="cert-modal-meta">
+          <span class="cert-modal-meta-title" id="cert-modal-meta-title">Advanced System Security Topics</span>
+          <span class="cert-modal-meta-provider" id="cert-modal-meta-provider">Coursera — University of Colorado</span>
+        </div>
+        <div class="cert-modal-footer-actions">
+          <a class="cert-modal-footer-local" id="cert-modal-footer-local" href="assets/certificates/coursera-advanced-system-security.pdf" target="_blank" rel="noopener noreferrer">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>Full PDF</span>
+          </a>
+          <a class="cert-modal-footer-open" id="cert-modal-footer-open" href="https://1drv.ms/b/c/5eb2f64109d02186/IQB6rp_hD_9fTbTIBxGm4B7qAXNJK4xIlXwAoLzBC4ZAVjQ?e=fxXfWs" target="_blank" rel="noopener noreferrer">
+            <span>Open Original</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast-msg" role="status" aria-live="polite"></div>
+
+  <!-- Three.js (WebGL Geometric Crystal) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Main Application Script -->
+  <script src="app.js?v=2.7"></script>
+</body>
+</html>
