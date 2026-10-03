@@ -100,47 +100,106 @@ let threeSceneInstance = null;
 let toastTimeout = null;
 
 // -----------------------------------------------------------------------------
-// 3. Theme System (Dark Mode default & Refined Light Mode with Persistence)
+// 3. Aesthetic Lighting Theme System (5 Master-Crafted Atmospheres)
+// - 1. Obsidian Dark (Root Default: Cosmic Black & Electric Cyan)
+// - 2. Cupertino Light (Architectural Pure Minimalist White & Slate)
+// - 3. Cyberpunk Neon (Neo-Tokyo Midnight Violet & Electric Magenta)
+// - 4. Nordic Aurora (Boreal Forest Obsidian & Bioluminescent Mint Emerald)
+// - 5. Sunset Amber (Warm Solar Espresso Twilight & Radiant Gold Tangerine)
 // -----------------------------------------------------------------------------
+const THEME_PRESETS = [
+  { id: 'obsidian', name: 'Obsidian Dark', icon: 'obsidian', isLight: false, toast: '🌑 Obsidian Dark Mode' },
+  { id: 'cupertino', name: 'Cupertino Light', icon: 'cupertino', isLight: true, toast: '☀️ Cupertino Light Mode' },
+  { id: 'cyberpunk', name: 'Cyberpunk Neon', icon: 'cyberpunk', isLight: false, toast: '⚡ Cyberpunk Neon Mode' },
+  { id: 'aurora', name: 'Nordic Aurora', icon: 'aurora', isLight: false, toast: '✨ Nordic Aurora Mode' },
+  { id: 'sunset', name: 'Sunset Amber', icon: 'sunset', isLight: false, toast: '🌅 Sunset Amber Mode' }
+];
+
 function initTheme() {
   const themeBtn = document.getElementById('theme-toggle-btn');
-  const sunIcon = document.getElementById('theme-sun-icon');
-  const moonIcon = document.getElementById('theme-moon-icon');
+  const themeIcons = document.querySelectorAll('.theme-mode-icon');
 
-  function updateThemeUI(isLight) {
-    if (isLight) {
+  function applyTheme(themeId, notify = false) {
+    const theme = THEME_PRESETS.find(t => t.id === themeId) || THEME_PRESETS[0];
+
+    // Remove all previous theme classes
+    document.body.classList.remove(
+      'light-theme',
+      'theme-obsidian',
+      'theme-cupertino',
+      'theme-cyberpunk',
+      'theme-aurora',
+      'theme-sunset'
+    );
+
+    // Apply active theme class and data-theme attribute
+    document.body.setAttribute('data-theme', theme.id);
+    document.body.classList.add(`theme-${theme.id}`);
+
+    if (theme.isLight) {
       document.body.classList.add('light-theme');
-      if (sunIcon) sunIcon.style.display = 'none';
-      if (moonIcon) moonIcon.style.display = 'block';
-    } else {
-      document.body.classList.remove('light-theme');
-      if (sunIcon) sunIcon.style.display = 'block';
-      if (moonIcon) moonIcon.style.display = 'none';
     }
 
-    if (threeSceneInstance) {
-      threeSceneInstance.updateTheme(isLight);
+    // Update active icon with micro-animation
+    themeIcons.forEach(icon => {
+      const match = icon.getAttribute('data-theme-icon') === theme.id;
+      if (match) {
+        icon.style.display = 'block';
+        icon.classList.remove('theme-icon-animating');
+        void icon.offsetWidth; // trigger reflow for CSS keyframe animation
+        icon.classList.add('theme-icon-animating');
+      } else {
+        icon.style.display = 'none';
+        icon.classList.remove('theme-icon-animating');
+      }
+    });
+
+    // Update button title & aria-label
+    if (themeBtn) {
+      const currentIndex = THEME_PRESETS.findIndex(t => t.id === theme.id);
+      const nextTheme = THEME_PRESETS[(currentIndex + 1) % THEME_PRESETS.length];
+      themeBtn.setAttribute('title', `Current: ${theme.name} — Click to switch to ${nextTheme.name} (T)`);
+      themeBtn.setAttribute('aria-label', `Switch aesthetic lighting theme from ${theme.name} to ${nextTheme.name}`);
+    }
+
+    // Update 3D Crystal lighting & materials
+    if (threeSceneInstance && typeof threeSceneInstance.updateTheme === 'function') {
+      threeSceneInstance.updateTheme(theme.id);
+    }
+
+    // Persist in localStorage
+    localStorage.setItem('somenath_theme_mode', theme.id);
+    localStorage.setItem('somenath_theme', theme.isLight ? 'light' : 'dark');
+
+    if (notify) {
+      showToast(theme.toast);
     }
   }
 
   // Load saved theme from localStorage
-  const savedTheme = localStorage.getItem('somenath_theme');
-  const isLight = savedTheme ? savedTheme === 'light' : false;
+  const savedMode = localStorage.getItem('somenath_theme_mode') || 
+                    (localStorage.getItem('somenath_theme') === 'light' ? 'cupertino' : 'obsidian');
+  applyTheme(savedMode, false);
 
-  updateThemeUI(isLight);
+  function cycleTheme() {
+    const currentId = document.body.getAttribute('data-theme') || 'obsidian';
+    const currentIndex = THEME_PRESETS.findIndex(t => t.id === currentId);
+    const nextIndex = (currentIndex + 1) % THEME_PRESETS.length;
+    applyTheme(THEME_PRESETS[nextIndex].id, true);
+  }
 
   if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      toggleTheme();
+    themeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      cycleTheme();
     });
   }
 
-  window.toggleTheme = function() {
-    const currentlyLight = document.body.classList.contains('light-theme');
-    const nextLight = !currentlyLight;
-    updateThemeUI(nextLight);
-    localStorage.setItem('somenath_theme', nextLight ? 'light' : 'dark');
-    showToast(nextLight ? 'Light Theme Enabled' : 'Obsidian Dark Theme Enabled');
+  // Global APIs for external callers (keyboard shortcut 'T', spotlight palette, easter egg)
+  window.cycleTheme = cycleTheme;
+  window.toggleTheme = cycleTheme;
+  window.setTheme = function(themeId) {
+    applyTheme(themeId, true);
   };
 }
 
@@ -178,41 +237,51 @@ function initNavigation() {
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 1. Sliding Pill Position Calculation
-  function movePillTo(targetLink, animated = true) {
-    if (!pillIndicator || !targetLink || !navWrapper) return;
-
-    if (window.innerWidth <= 768) {
-      pillIndicator.style.opacity = '0';
-      return;
+  const SECTION_CONFIGS = {
+    'hero': { 
+      color: '#00d2ff', 
+      dim: 'rgba(0, 210, 255, 0.35)', 
+      glow: 'rgba(0, 210, 255, 0.7)' 
+    },
+    'about': { 
+      color: '#b845ed', 
+      dim: 'rgba(184, 69, 237, 0.35)', 
+      glow: 'rgba(184, 69, 237, 0.7)' 
+    },
+    'skills': { 
+      color: '#05df96', 
+      dim: 'rgba(5, 223, 150, 0.35)', 
+      glow: 'rgba(5, 223, 150, 0.7)' 
+    },
+    'projects': { 
+      color: '#f59e0b', 
+      dim: 'rgba(245, 158, 11, 0.35)', 
+      glow: 'rgba(245, 158, 11, 0.7)' 
+    },
+    'education': { 
+      color: '#f43f5e', 
+      dim: 'rgba(244, 63, 94, 0.35)', 
+      glow: 'rgba(244, 63, 94, 0.7)' 
+    },
+    'certifications': { 
+      color: '#6366f1', 
+      dim: 'rgba(99, 102, 241, 0.35)', 
+      glow: 'rgba(99, 102, 241, 0.7)' 
+    },
+    'contact': { 
+      color: '#ff6b1a', 
+      dim: 'rgba(255, 107, 26, 0.35)', 
+      glow: 'rgba(255, 107, 26, 0.7)' 
     }
+  };
 
-    const wrapperRect = navWrapper.getBoundingClientRect();
-    const linkRect = targetLink.getBoundingClientRect();
-
-    const left = linkRect.left - wrapperRect.left;
-    const top = linkRect.top - wrapperRect.top;
-    const width = linkRect.width;
-    const height = linkRect.height;
-
-    if (!animated || isReducedMotion) {
-      pillIndicator.style.transition = 'none';
-      pillIndicator.style.transform = `translate3d(${left}px, ${top}px, 0)`;
-      pillIndicator.style.width = `${width}px`;
-      pillIndicator.style.height = `${height}px`;
-      pillIndicator.style.opacity = '1';
-
-      // Force synchronous layout and restore standard transition
-      void pillIndicator.offsetHeight;
-      pillIndicator.style.transition = '';
-    } else {
-      pillIndicator.style.transform = `translate3d(${left}px, ${top}px, 0)`;
-      pillIndicator.style.width = `${width}px`;
-      pillIndicator.style.height = `${height}px`;
-      pillIndicator.style.opacity = '1';
-    }
-
-    // Update active class and accessibility attributes
+  // 1. Set Active Capsule & Synchronize External Border Light
+  function setActiveNavSection(sectionId) {
+    if (!sectionId) return;
+    activeSectionId = sectionId;
+    const targetLink = document.querySelector(`.nav-link[href="#${sectionId}"]`) || 
+                       document.querySelector(`.nav-link[data-nav="${sectionId}"]`);
+    
     navLinks.forEach((link) => {
       if (link === targetLink) {
         link.classList.add('active');
@@ -222,16 +291,12 @@ function initNavigation() {
         link.removeAttribute('aria-current');
       }
     });
-  }
 
-  // 2. Set Active Section Programmatically
-  function setActiveNavSection(sectionId, animated = true) {
-    if (!sectionId) return;
-    activeSectionId = sectionId;
-    const targetLink = document.querySelector(`.nav-link[href="#${sectionId}"]`) || 
-                       document.querySelector(`.nav-link[data-nav="${sectionId}"]`);
-    if (targetLink) {
-      movePillTo(targetLink, animated);
+    if (navWrapper && SECTION_CONFIGS[sectionId]) {
+      const conf = SECTION_CONFIGS[sectionId];
+      navWrapper.style.setProperty('--active-ext-color', conf.color);
+      navWrapper.style.setProperty('--active-ext-dim', conf.dim);
+      navWrapper.style.setProperty('--active-glow-color', conf.glow);
     }
   }
 
@@ -339,52 +404,8 @@ function initNavigation() {
       });
     });
   }
-
-  // 7. Responsive Resizing & Metric Recalibration
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`) || 
-                         document.querySelector('.nav-link.active');
-      if (activeLink) {
-        movePillTo(activeLink, false);
-      }
-    } else if (pillIndicator) {
-      pillIndicator.style.opacity = '0';
-    }
-  }, { passive: true });
-
-  // 8. Mobile Menu Drawer Toggle
-  if (mobileBtn && navMenu) {
-    mobileBtn.addEventListener('click', () => {
-      const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-      mobileBtn.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('mobile-open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!header.contains(e.target) && navMenu.classList.contains('mobile-open')) {
-        navMenu.classList.remove('mobile-open');
-        mobileBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // 9. Initial Placement once Web Fonts are ready
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => {
-      const initialActive = document.querySelector('.nav-link.active') || navLinks[0];
-      if (initialActive) {
-        movePillTo(initialActive, false);
-      }
-    });
-  } else {
-    setTimeout(() => {
-      const initialActive = document.querySelector('.nav-link.active') || navLinks[0];
-      if (initialActive) {
-        movePillTo(initialActive, false);
-      }
-    }, 120);
-  }
+  // 7. Initial Active Capsule Setup
+  setActiveNavSection('hero');
 }
 
 
@@ -408,8 +429,15 @@ const COMMAND_ITEMS = [
   { category: 'Projects', icon: 'window', label: 'Open Algorithmic Engineering Core', action: () => openProjectModalDirect('algorithms'), shortcut: 'App 4' },
   { category: 'Projects', icon: 'window', label: 'Open KrishiOne Agritech Digital Platform', action: () => openProjectModalDirect('krishione'), shortcut: 'App 5' },
 
+  // Aesthetic Lighting Themes
+  { category: 'Theme', icon: 'sun', label: 'Cycle Aesthetic Theme (Next Mode)', action: () => window.cycleTheme(), shortcut: 'T' },
+  { category: 'Theme', icon: 'moon', label: 'Theme: Obsidian Dark Mode', action: () => window.setTheme('obsidian'), shortcut: 'Th 1' },
+  { category: 'Theme', icon: 'sun', label: 'Theme: Cupertino Light Mode', action: () => window.setTheme('cupertino'), shortcut: 'Th 2' },
+  { category: 'Theme', icon: 'zap', label: 'Theme: Cyberpunk Neon Mode', action: () => window.setTheme('cyberpunk'), shortcut: 'Th 3' },
+  { category: 'Theme', icon: 'shield', label: 'Theme: Nordic Aurora Mode', action: () => window.setTheme('aurora'), shortcut: 'Th 4' },
+  { category: 'Theme', icon: 'sun', label: 'Theme: Sunset Amber Mode', action: () => window.setTheme('sunset'), shortcut: 'Th 5' },
+
   // System Actions
-  { category: 'Actions', icon: 'sun', label: 'Toggle Light / Dark Mode', action: () => window.toggleTheme(), shortcut: 'T' },
   { category: 'Actions', icon: 'copy', label: 'Copy Email Address', action: () => copyEmailToClipboard(), shortcut: 'Copy' },
   { category: 'Actions', icon: 'file', label: 'Download Resume (PDF)', action: () => downloadResumeAction(), shortcut: 'PDF' },
   { category: 'Actions', icon: 'github', label: 'Open GitHub Profile', action: () => window.open('https://github.com/somenathGit', '_blank'), shortcut: '↗' },
@@ -435,6 +463,10 @@ function getCategoryIcon(type) {
       return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>`;
     case 'sun':
       return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>`;
+    case 'moon':
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    case 'zap':
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`;
     case 'copy':
       return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
     case 'file':
@@ -1135,14 +1167,36 @@ class EngineeringVisual {
       return;
     }
 
+    // Hide fallback immediately if WebGL is active
+    if (this.fallback) {
+      this.fallback.style.display = 'none';
+    }
+
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.isVisible = true;
 
+    // Interactive Drag & Momentum Physics State
+    this.isDragging = false;
+    this.prevPointerX = 0;
+    this.prevPointerY = 0;
+    this.dragVelX = 0;
+    this.dragVelY = 0;
+    this.manualRotX = 0.22;
+    this.manualRotY = 0.45;
+
+    // Hover Parallax
+    this.parallaxX = 0;
+    this.parallaxY = 0;
+    this.targetParallaxX = 0;
+    this.targetParallaxY = 0;
+
     try {
       this.scene = new THREE.Scene();
-      const aspect = this.container.clientWidth / (this.container.clientHeight || 480);
-      this.camera = new THREE.PerspectiveCamera(42, aspect, 0.1, 100);
-      this.camera.position.set(0, 0, 5.2);
+      const containerH = this.container.clientHeight || 520;
+      const aspect = this.container.clientWidth / containerH;
+      this.camera = new THREE.PerspectiveCamera(38, aspect, 0.1, 100);
+      const targetZ = aspect < 1 ? (7.2 / aspect) : 7.2;
+      this.camera.position.set(0, 0, targetZ);
 
       this.renderer = new THREE.WebGLRenderer({
         canvas: canvas,
@@ -1150,13 +1204,10 @@ class EngineeringVisual {
         antialias: true,
         powerPreference: 'high-performance'
       });
-      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+      this.renderer.setSize(this.container.clientWidth, containerH);
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-
-      this.targetRotX = 0;
-      this.targetRotY = 0;
-      this.currentRotX = 0;
-      this.currentRotY = 0;
+      this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      this.renderer.toneMappingExposure = 1.15;
 
       this.initGeometry();
       this.initLights();
@@ -1184,93 +1235,236 @@ class EngineeringVisual {
 
   initGeometry() {
     this.group = new THREE.Group();
-
-    // 1. Central Faceted Intelligence Core (Graphite / Obsidian Metal: 95% Neutral)
-    const coreGeo = new THREE.IcosahedronGeometry(1.24, 0);
     const isLight = document.body.classList.contains('light-theme');
-    
-    this.coreMat = new THREE.MeshPhysicalMaterial({
-      color: isLight ? 0x242e42 : 0x141a26,
-      metalness: 0.92,
-      roughness: 0.22,
-      reflectivity: 0.8,
-      clearcoat: 0.9,
-      clearcoatRoughness: 0.15,
-      transparent: true,
-      opacity: 0.92
-    });
-    this.coreMesh = new THREE.Mesh(coreGeo, this.coreMat);
-    this.group.add(this.coreMesh);
 
-    // 2. Delicate Wireframe Lattice Cage
-    const wireGeo = new THREE.IcosahedronGeometry(1.26, 0);
-    this.wireMat = new THREE.MeshBasicMaterial({
-      color: isLight ? 0x0f172a : 0xffffff,
-      wireframe: true,
-      transparent: true,
-      opacity: isLight ? 0.25 : 0.18
-    });
-    this.wireMesh = new THREE.Mesh(wireGeo, this.wireMat);
-    this.group.add(this.wireMesh);
+    // =========================================================================
+    // LAYER 1: INNER EMISSIVE AMBER CORE (Nuclear Singularity & Strut Lattice)
+    // =========================================================================
+    this.innerGroup = new THREE.Group();
 
-    // 3. Connected Vertices Data Nodes (5% Warm Amber Accent)
-    const vertexPoints = [];
-    const posAttr = coreGeo.attributes.position;
-    for (let i = 0; i < posAttr.count; i++) {
-      vertexPoints.push(new THREE.Vector3(posAttr.getX(i), posAttr.getY(i), posAttr.getZ(i)));
-    }
-    const nodesGeo = new THREE.BufferGeometry().setFromPoints(vertexPoints);
-    this.nodesMat = new THREE.PointsMaterial({
+    // Central Glowing Geodesic Singularity (Spherical, No 4-corner diamond edges)
+    const innerCoreGeo = new THREE.IcosahedronGeometry(0.42, 2);
+    this.innerCoreMat = new THREE.MeshStandardMaterial({
       color: 0xf59e0b,
-      size: 0.08,
-      transparent: true,
-      opacity: 0.95
+      emissive: 0xf59e0b,
+      emissiveIntensity: 1.5,
+      roughness: 0.12,
+      metalness: 0.2
     });
-    this.nodesMesh = new THREE.Points(nodesGeo, this.nodesMat);
+    this.innerCoreMesh = new THREE.Mesh(innerCoreGeo, this.innerCoreMat);
+    this.innerGroup.add(this.innerCoreMesh);
+
+    // Inner Amber Geodesic Cage (Uniformly distributed nodes)
+    const innerLatticeGeo = new THREE.IcosahedronGeometry(0.72, 1);
+    this.innerLatticeMat = new THREE.LineBasicMaterial({
+      color: 0xf59e0b,
+      transparent: true,
+      opacity: 0.88,
+      depthTest: false,
+      depthWrite: false
+    });
+    const innerLattice = new THREE.LineSegments(new THREE.EdgesGeometry(innerLatticeGeo), this.innerLatticeMat);
+    innerLattice.renderOrder = 998;
+    this.innerGroup.add(innerLattice);
+
+    // Inner Glowing Amber Vertex Nodes
+    const innerNodesMat = new THREE.PointsMaterial({
+      color: 0xfbbf24,
+      size: 0.045,
+      transparent: true,
+      opacity: 0.9,
+      depthTest: false,
+      depthWrite: false
+    });
+    const innerNodes = new THREE.Points(innerLatticeGeo, innerNodesMat);
+    innerNodes.renderOrder = 998;
+    this.innerGroup.add(innerNodes);
+
+    // Radial interconnect struts from singularity center to inner vertices
+    const radialPoints = [];
+    const innerPos = innerLatticeGeo.attributes.position;
+    for (let i = 0; i < innerPos.count; i++) {
+      radialPoints.push(new THREE.Vector3(0, 0, 0));
+      radialPoints.push(new THREE.Vector3(innerPos.getX(i), innerPos.getY(i), innerPos.getZ(i)));
+    }
+    const radialGeo = new THREE.BufferGeometry().setFromPoints(radialPoints);
+    const radialMat = new THREE.LineBasicMaterial({
+      color: 0xf59e0b,
+      transparent: true,
+      opacity: 0.35,
+      depthTest: false,
+      depthWrite: false
+    });
+    const radialMesh = new THREE.LineSegments(radialGeo, radialMat);
+    radialMesh.renderOrder = 997;
+    this.innerGroup.add(radialMesh);
+
+    this.group.add(this.innerGroup);
+
+    // =========================================================================
+    // LAYER 2: VOLUMETRIC METALLIC GLASS TRANSLUCENT SHELL
+    // =========================================================================
+    // Multi-faceted Geodesic Icosahedron (80 regular triangular facets for volumetric depth)
+    const outerGeo = new THREE.IcosahedronGeometry(1.12, 2);
+    this.shellMat = new THREE.MeshPhysicalMaterial({
+      color: isLight ? 0xcfd8dc : 0x090e17,
+      metalness: 0.35,
+      roughness: 0.14,
+      transmission: 0.65,
+      ior: 1.52,
+      reflectivity: 0.9,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.1,
+      transparent: true,
+      opacity: isLight ? 0.82 : 0.72,
+      side: THREE.FrontSide
+    });
+    this.shellMesh = new THREE.Mesh(outerGeo, this.shellMat);
+    this.group.add(this.shellMesh);
+
+    // =========================================================================
+    // LAYER 3: CRITICAL REQUIREMENT — ALWAYS-VISIBLE WIREFRAME & LINKS OVERLAY
+    // depthTest: false guarantees rear edges NEVER disappear when rotated!
+    // =========================================================================
+    // 3A. Primary Silver-Blue / Electric Cyan Geodesic Wireframe
+    const outerEdges = new THREE.EdgesGeometry(outerGeo);
+    this.primaryWireMat = new THREE.LineBasicMaterial({
+      color: isLight ? 0x0284c7 : 0x38bdf8,
+      transparent: true,
+      opacity: 0.85,
+      depthTest: false,
+      depthWrite: false
+    });
+    this.primaryWireMesh = new THREE.LineSegments(outerEdges, this.primaryWireMat);
+    this.primaryWireMesh.renderOrder = 999;
+    this.group.add(this.primaryWireMesh);
+
+    // 3B. Secondary Concentric Warm Amber Harmonic Sub-Lattice
+    const secondaryGeo = new THREE.IcosahedronGeometry(0.92, 1);
+    this.secondaryWireMat = new THREE.LineBasicMaterial({
+      color: isLight ? 0xd97706 : 0xf59e0b,
+      transparent: true,
+      opacity: 0.52,
+      depthTest: false,
+      depthWrite: false
+    });
+    this.secondaryWireMesh = new THREE.LineSegments(new THREE.EdgesGeometry(secondaryGeo), this.secondaryWireMat);
+    this.secondaryWireMesh.renderOrder = 1000;
+    this.group.add(this.secondaryWireMesh);
+
+    // 3C. Luminous Outer Vertex Data Nodes
+    this.nodesMat = new THREE.PointsMaterial({
+      color: 0xfbbf24,
+      size: 0.046,
+      transparent: true,
+      opacity: 0.95,
+      depthTest: false,
+      depthWrite: false
+    });
+    this.nodesMesh = new THREE.Points(outerGeo, this.nodesMat);
+    this.nodesMesh.renderOrder = 1001;
     this.group.add(this.nodesMesh);
 
-    // 4. Primary Orbital Ring (Robotics / Hardware Guidance System)
-    const ring1Geo = new THREE.TorusGeometry(1.92, 0.012, 16, 96);
+    // =========================================================================
+    // LAYER 4: MULTI-AXIS LAYERED ELLIPTICAL ORBIT PATHS & SATELLITE BEACONS
+    // =========================================================================
+    this.orbitGroup = new THREE.Group();
+
+    // Track 1: Warm Amber Inclined Orbit (+32° tilt)
+    const ring1Geo = new THREE.TorusGeometry(1.62, 0.009, 16, 128);
     this.ring1Mat = new THREE.MeshBasicMaterial({
       color: 0xf59e0b,
       transparent: true,
-      opacity: 0.4
+      opacity: 0.48
     });
     this.ring1Mesh = new THREE.Mesh(ring1Geo, this.ring1Mat);
     this.ring1Mesh.rotation.x = Math.PI / 3.2;
     this.ring1Mesh.rotation.y = Math.PI / 8;
-    this.group.add(this.ring1Mesh);
+    this.orbitGroup.add(this.ring1Mesh);
 
-    // 5. Secondary Orbital Ring (AI / Architecture Core)
-    const ring2Geo = new THREE.TorusGeometry(2.18, 0.009, 16, 96);
+    // Orbiting Satellite Beacon 1 (Warm Amber Pulse)
+    this.beacon1 = new THREE.Mesh(
+      new THREE.SphereGeometry(0.040, 12, 12),
+      new THREE.MeshBasicMaterial({ color: 0xffffff })
+    );
+    this.ring1Mesh.add(this.beacon1);
+
+    // Track 2: Cool Silver-Blue Inclined Orbit (-42° tilt)
+    const ring2Geo = new THREE.TorusGeometry(1.92, 0.008, 16, 128);
     this.ring2Mat = new THREE.MeshBasicMaterial({
-      color: isLight ? 0x64748b : 0xffffff,
+      color: isLight ? 0x0284c7 : 0x38bdf8,
       transparent: true,
-      opacity: 0.2
+      opacity: 0.38
     });
     this.ring2Mesh = new THREE.Mesh(ring2Geo, this.ring2Mat);
-    this.ring2Mesh.rotation.x = -Math.PI / 3.8;
+    this.ring2Mesh.rotation.x = -Math.PI / 3.6;
     this.ring2Mesh.rotation.z = Math.PI / 5;
-    this.group.add(this.ring2Mesh);
+    this.orbitGroup.add(this.ring2Mesh);
 
-    // 6. Micro Data Dust Particles
-    const particleCount = 42;
+    // Orbiting Satellite Beacon 2 (Cyan Pulse)
+    this.beacon2 = new THREE.Mesh(
+      new THREE.SphereGeometry(0.036, 12, 12),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8 })
+    );
+    this.ring2Mesh.add(this.beacon2);
+
+    // Track 3: Polar Outer Guidance Ring
+    const ring3Geo = new THREE.TorusGeometry(2.18, 0.006, 16, 128);
+    this.ring3Mat = new THREE.MeshBasicMaterial({
+      color: isLight ? 0x475569 : 0x94a3b8,
+      transparent: true,
+      opacity: 0.22
+    });
+    this.ring3Mesh = new THREE.Mesh(ring3Geo, this.ring3Mat);
+    this.ring3Mesh.rotation.y = Math.PI / 2.2;
+    this.ring3Mesh.rotation.x = Math.PI / 10;
+    this.orbitGroup.add(this.ring3Mesh);
+
+    // Segmented Equatorial Reticle Arc
+    const reticleGeo = new THREE.RingGeometry(1.68, 1.70, 64);
+    const reticleMat = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: 0.16
+    });
+    const reticleMesh = new THREE.Mesh(reticleGeo, reticleMat);
+    reticleMesh.rotation.x = Math.PI / 2;
+    this.orbitGroup.add(reticleMesh);
+
+    this.group.add(this.orbitGroup);
+
+    // =========================================================================
+    // LAYER 5: AMBIENT DATA PARTICLES (Sparse Volumetric Star Dust)
+    // =========================================================================
+    const particleCount = 65;
     const particleGeo = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
+    const particleColors = new Float32Array(particleCount * 3);
+    const colorAmber = new THREE.Color(0xf59e0b);
+    const colorCyan = new THREE.Color(0x38bdf8);
+
     for (let p = 0; p < particleCount; p++) {
-      const radius = 1.6 + Math.random() * 1.1;
+      const radius = 1.3 + Math.random() * 0.95;
       const theta = Math.random() * Math.PI * 2;
       const phi = (Math.random() - 0.5) * Math.PI;
       particlePositions[p * 3] = radius * Math.cos(theta) * Math.cos(phi);
       particlePositions[p * 3 + 1] = radius * Math.sin(phi);
       particlePositions[p * 3 + 2] = radius * Math.sin(theta) * Math.cos(phi);
+
+      const chosenColor = Math.random() > 0.4 ? colorAmber : colorCyan;
+      particleColors[p * 3] = chosenColor.r;
+      particleColors[p * 3 + 1] = chosenColor.g;
+      particleColors[p * 3 + 2] = chosenColor.b;
     }
     particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+
     this.particleMat = new THREE.PointsMaterial({
-      color: 0xf59e0b,
-      size: 0.045,
+      size: 0.038,
+      vertexColors: true,
       transparent: true,
-      opacity: 0.65
+      opacity: 0.75
     });
     this.particleMesh = new THREE.Points(particleGeo, this.particleMat);
     this.group.add(this.particleMesh);
@@ -1279,30 +1473,105 @@ class EngineeringVisual {
   }
 
   initLights() {
-    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // Ambient Deep Space Slate/Navy Fill
+    this.ambientLight = new THREE.AmbientLight(0x0a1120, 1.8);
     this.scene.add(this.ambientLight);
 
-    // Studio Key Light
-    this.keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    this.keyLight.position.set(4, 5, 5);
+    // Key Light (Warm Key)
+    this.keyLight = new THREE.DirectionalLight(0xfff7ed, 1.9);
+    this.keyLight.position.set(5, 6, 5);
     this.scene.add(this.keyLight);
 
-    // Warm Amber Internal Rim Light
-    this.pointLight = new THREE.PointLight(0xf59e0b, 1.8, 12);
-    this.pointLight.position.set(1.5, -1, 3);
-    this.scene.add(this.pointLight);
+    // Rim Light (Cool Electric Cyan / Silver-Blue)
+    this.rimLight = new THREE.DirectionalLight(0x38bdf8, 2.4);
+    this.rimLight.position.set(-5, -3, -4);
+    this.scene.add(this.rimLight);
+
+    // Core Point Light (Warm Amber Internal Glow)
+    this.corePointLight = new THREE.PointLight(0xf59e0b, 3.2, 10);
+    this.corePointLight.position.set(0, 0, 0);
+    this.scene.add(this.corePointLight);
+
+    // Secondary Cyan Subtle Fill
+    this.fillLight = new THREE.PointLight(0x0284c7, 1.2, 8);
+    this.fillLight.position.set(2, -2, 3);
+    this.scene.add(this.fillLight);
   }
 
-  updateTheme(isLight) {
-    if (this.coreMat) {
-      this.coreMat.color.setHex(isLight ? 0x242e42 : 0x141a26);
+  updateTheme(themeId) {
+    const isLight = themeId === 'cupertino';
+    const isCyberpunk = themeId === 'cyberpunk';
+    const isAurora = themeId === 'aurora';
+    const isSunset = themeId === 'sunset';
+
+    let shellColor = 0x090e17;
+    let shellOpacity = 0.72;
+    let primaryWire = 0x38bdf8;
+    let secondaryWire = 0xf59e0b;
+    let ring2Color = 0x38bdf8;
+    let ring3Color = 0x94a3b8;
+    let coreLightColor = 0xf59e0b;
+    let rimLightColor = 0x38bdf8;
+
+    if (isLight) {
+      shellColor = 0xcfd8dc;
+      shellOpacity = 0.82;
+      primaryWire = 0x0284c7;
+      secondaryWire = 0xd97706;
+      ring2Color = 0x0284c7;
+      ring3Color = 0x475569;
+      coreLightColor = 0xd97706;
+      rimLightColor = 0x0284c7;
+    } else if (isCyberpunk) {
+      shellColor = 0x120d26;
+      shellOpacity = 0.78;
+      primaryWire = 0xec4899; // neon magenta
+      secondaryWire = 0xa855f7; // neon violet
+      ring2Color = 0x00f0ff; // electric cyan
+      ring3Color = 0xc084fc;
+      coreLightColor = 0xec4899;
+      rimLightColor = 0x00f0ff;
+    } else if (isAurora) {
+      shellColor = 0x061812;
+      shellOpacity = 0.78;
+      primaryWire = 0x10b981; // emerald mint
+      secondaryWire = 0x06b6d4; // arctic cyan
+      ring2Color = 0x34d399;
+      ring3Color = 0x6ee7b7;
+      coreLightColor = 0x10b981;
+      rimLightColor = 0x06b6d4;
+    } else if (isSunset) {
+      shellColor = 0x1a0f0a;
+      shellOpacity = 0.78;
+      primaryWire = 0xf97316; // sunset tangerine
+      secondaryWire = 0xfbbf24; // solar gold
+      ring2Color = 0xf43f5e; // rose
+      ring3Color = 0xfdba74;
+      coreLightColor = 0xff7a00;
+      rimLightColor = 0xf43f5e;
     }
-    if (this.wireMat) {
-      this.wireMat.color.setHex(isLight ? 0x0f172a : 0xffffff);
-      this.wireMat.opacity = isLight ? 0.25 : 0.18;
+
+    if (this.shellMat) {
+      this.shellMat.color.setHex(shellColor);
+      this.shellMat.opacity = shellOpacity;
+    }
+    if (this.primaryWireMat) {
+      this.primaryWireMat.color.setHex(primaryWire);
+    }
+    if (this.secondaryWireMat) {
+      this.secondaryWireMat.color.setHex(secondaryWire);
     }
     if (this.ring2Mat) {
-      this.ring2Mat.color.setHex(isLight ? 0x64748b : 0xffffff);
+      this.ring2Mat.color.setHex(ring2Color);
+    }
+    if (this.ring3Mat) {
+      this.ring3Mat.color.setHex(ring3Color);
+    }
+    if (this.corePointLight) {
+      this.corePointLight.color.setHex(coreLightColor);
+    }
+    if (this.rimLight) {
+      this.rimLight.color.setHex(rimLightColor);
     }
     if (this.reducedMotion) {
       this.render();
@@ -1313,20 +1582,52 @@ class EngineeringVisual {
     window.addEventListener('resize', () => {
       if (!this.container || !this.renderer || !this.camera) return;
       const width = this.container.clientWidth;
-      const height = this.container.clientHeight || 480;
-      this.camera.aspect = width / height;
+      const height = this.container.clientHeight || 520;
+      const aspect = width / height;
+      this.camera.aspect = aspect;
+      this.camera.position.z = aspect < 1 ? (7.2 / aspect) : 7.2;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(width, height);
       if (this.reducedMotion) this.render();
     }, { passive: true });
 
-    // Subtle pointer response (Section 12: X: ±4 degrees [~0.07 rad], Y: ±6 degrees [~0.105 rad])
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      this.targetRotY = x * 0.105;
-      this.targetRotX = -y * 0.07;
+    // Pointer Drag Interaction (Supports Mouse, Trackpad, Touch)
+    this.container.addEventListener('pointerdown', (e) => {
+      this.isDragging = true;
+      this.container.classList.add('is-dragging');
+      this.prevPointerX = e.clientX;
+      this.prevPointerY = e.clientY;
+      this.dragVelX = 0;
+      this.dragVelY = 0;
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (this.isDragging) {
+        const deltaX = e.clientX - this.prevPointerX;
+        const deltaY = e.clientY - this.prevPointerY;
+        this.dragVelY = deltaX * 0.007;
+        this.dragVelX = deltaY * 0.007;
+        this.manualRotY += this.dragVelY;
+        this.manualRotX += this.dragVelX;
+        this.prevPointerX = e.clientX;
+        this.prevPointerY = e.clientY;
+      } else {
+        // Subtle Hover Parallax
+        const x = (e.clientX / window.innerWidth) * 2 - 1;
+        const y = -(e.clientY / window.innerHeight) * 2 + 1;
+        this.targetParallaxY = x * 0.12;
+        this.targetParallaxX = -y * 0.08;
+      }
     }, { passive: true });
+
+    const endDrag = () => {
+      if (!this.isDragging) return;
+      this.isDragging = false;
+      this.container.classList.remove('is-dragging');
+    };
+
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
   }
 
   setupVisibilityObserver() {
@@ -1348,29 +1649,64 @@ class EngineeringVisual {
 
     if (!this.isVisible || this.reducedMotion) return;
 
-    // Smooth lerp to mouse targets
-    this.currentRotX += (this.targetRotX - this.currentRotX) * 0.04;
-    this.currentRotY += (this.targetRotY - this.currentRotY) * 0.04;
+    const time = performance.now() * 0.0007;
 
-    const time = performance.now() * 0.0006;
+    // Drag inertia release & continuous idle rotation
+    if (!this.isDragging) {
+      this.manualRotX += this.dragVelX;
+      this.manualRotY += this.dragVelY;
+      this.dragVelX *= 0.94;
+      this.dragVelY *= 0.94;
+
+      // Smooth continuous idle rotation
+      this.manualRotY += 0.0035;
+      this.manualRotX += Math.sin(time * 0.6) * 0.0008;
+    }
+
+    // Parallax easing
+    this.parallaxX += (this.targetParallaxX - this.parallaxX) * 0.05;
+    this.parallaxY += (this.targetParallaxY - this.parallaxY) * 0.05;
 
     if (this.group) {
-      // Idle rotation + pointer tracking
-      this.group.rotation.y = time * 0.18 + this.currentRotY;
-      this.group.rotation.x = Math.sin(time * 0.35) * 0.08 + this.currentRotX;
-      // Gentle calm breathing floating motion + subtle scroll shift
-      this.group.position.y = Math.sin(time * 0.9) * 0.05 - (window.scrollY * 0.00035);
+      this.group.rotation.x = this.manualRotX + this.parallaxX;
+      this.group.rotation.y = this.manualRotY + this.parallaxY;
+      // Gentle calm floating bobbing within bounds
+      this.group.position.y = Math.sin(time * 1.1) * 0.035 - (window.scrollY * 0.0002);
     }
 
-    // Decoupled orbital ring motion
+    // Inner core counter-rotation & pulsing breathing scale
+    if (this.innerGroup) {
+      this.innerGroup.rotation.y = -time * 0.45;
+      this.innerGroup.rotation.z = Math.sin(time * 0.8) * 0.25;
+      const pulseScale = 1 + Math.sin(time * 2.4) * 0.04;
+      this.innerGroup.scale.set(pulseScale, pulseScale, pulseScale);
+    }
+
+    // Core point light internal luminescence pulsation
+    if (this.corePointLight) {
+      this.corePointLight.intensity = 2.8 + Math.sin(time * 2.4) * 0.8;
+    }
+
+    // Decoupled orbital ring motion & satellite navigation
     if (this.ring1Mesh) {
-      this.ring1Mesh.rotation.z = time * 0.15;
+      this.ring1Mesh.rotation.z = time * 0.22;
+      if (this.beacon1) {
+        const t1 = time * 1.8;
+        this.beacon1.position.set(Math.cos(t1) * 1.62, Math.sin(t1) * 1.62, 0);
+      }
     }
     if (this.ring2Mesh) {
-      this.ring2Mesh.rotation.y = -time * 0.12;
+      this.ring2Mesh.rotation.y = -time * 0.18;
+      if (this.beacon2) {
+        const t2 = -time * 1.5;
+        this.beacon2.position.set(Math.cos(t2) * 1.92, Math.sin(t2) * 1.92, 0);
+      }
+    }
+    if (this.ring3Mesh) {
+      this.ring3Mesh.rotation.z = -time * 0.12;
     }
     if (this.particleMesh) {
-      this.particleMesh.rotation.y = time * 0.06;
+      this.particleMesh.rotation.y = time * 0.08;
     }
 
     this.render();

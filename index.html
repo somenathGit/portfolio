@@ -78,7 +78,7 @@
   </script>
 
   <!-- External Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=2.9" />
+  <link rel="stylesheet" href="style.css?v=3.8" />
 </head>
 <body>
   <!-- Accessibility Skip Link -->
@@ -101,17 +101,75 @@
         <span class="monogram-badge">SM</span>
       </a>
 
-        <!-- Middle: Main Nav Links (macOS Segmented Capsule Control) -->
+        <!-- Middle: Main Nav Links (Individual Glass Capsules with Rotating Lights) -->
         <nav aria-label="Primary Navigation" class="nav-menu-wrapper" id="nav-segmented-control">
-          <div class="nav-pill-indicator" id="nav-pill-indicator" aria-hidden="true"></div>
+          <!-- External Rotatable Border Light Beam -->
+          <div class="nav-external-beam" aria-hidden="true"></div>
+
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="#hero" class="nav-link active" data-nav="hero" aria-current="page">Home</a></li>
-            <li><a href="#about" class="nav-link" data-nav="about">About</a></li>
-            <li><a href="#skills" class="nav-link" data-nav="skills">Skills</a></li>
-            <li><a href="#projects" class="nav-link" data-nav="projects">Projects</a></li>
-            <li><a href="#education" class="nav-link" data-nav="education">Education</a></li>
-            <li><a href="#certifications" class="nav-link" data-nav="certifications">Certifications</a></li>
-            <li><a href="#contact" class="nav-link" data-nav="contact">Contact</a></li>
+            <li>
+              <a href="#hero" class="nav-link active" data-nav="hero" aria-current="page">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#about" class="nav-link" data-nav="about">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">About</span>
+              </a>
+            </li>
+            <li>
+              <a href="#skills" class="nav-link" data-nav="skills">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">Skills</span>
+              </a>
+            </li>
+            <li>
+              <a href="#projects" class="nav-link" data-nav="projects">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">Projects</span>
+              </a>
+            </li>
+            <li>
+              <a href="#education" class="nav-link" data-nav="education">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">Education</span>
+              </a>
+            </li>
+            <li>
+              <a href="#certifications" class="nav-link" data-nav="certifications">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">Certifications</span>
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="nav-link" data-nav="contact">
+                <span class="nav-link-beam" aria-hidden="true"></span>
+                <span class="nav-link-bounded-line" aria-hidden="true"></span>
+                <span class="nav-link-lightning-bead" aria-hidden="true"></span>
+                <span class="nav-link-aura" aria-hidden="true"></span>
+                <span class="nav-link-text">Contact</span>
+              </a>
+            </li>
           </ul>
         </nav>
 
@@ -134,10 +192,14 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           </a>
 
-          <!-- Theme Toggle (Dark / Light) -->
-          <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle Dark and Light theme" title="Toggle Theme (T)">
-            <!-- Sun icon (for dark mode) -->
-            <svg id="theme-sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Theme Toggle (Cycles 5 Aesthetic Modes: Obsidian Dark, Cupertino Light, Cyberpunk Neon, Nordic Aurora, Sunset Amber) -->
+          <button id="theme-toggle-btn" class="icon-btn theme-toggle-multi" aria-label="Toggle Aesthetic Theme Mode" title="Theme: Obsidian Dark (Click to change theme, or press T)">
+            <!-- 1. Obsidian Dark Moon Icon -->
+            <svg class="theme-mode-icon" data-theme-icon="obsidian" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- 2. Cupertino Light Sun Icon -->
+            <svg class="theme-mode-icon" data-theme-icon="cupertino" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
               <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -148,9 +210,23 @@
               <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            <!-- Moon icon (for light mode) -->
-            <svg id="theme-moon-icon" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            <!-- 3. Cyberpunk Neon Zap Icon -->
+            <svg class="theme-mode-icon" data-theme-icon="cyberpunk" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <!-- 4. Nordic Aurora Star/Sparkle Icon -->
+            <svg class="theme-mode-icon" data-theme-icon="aurora" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <!-- 5. Sunset Amber Horizon Icon -->
+            <svg class="theme-mode-icon" data-theme-icon="sunset" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 18a5 5 0 0 0-10 0"></path>
+              <line x1="12" y1="9" x2="12" y2="2"></line>
+              <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line>
+              <line x1="1" y1="18" x2="3" y2="18"></line>
+              <line x1="21" y1="18" x2="23" y2="18"></line>
+              <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line>
+              <line x1="23" y1="22" x2="1" y2="22"></line>
             </svg>
           </button>
 
@@ -239,7 +315,7 @@
               </div>
             </div>
 
-            <!-- Right Side: Interactive 3D Intelligence Core & Technical Stage -->
+            <!-- Right Side: Interactive 3D Intelligence Core Stage -->
             <div class="hero-visual-stage" aria-label="Interactive 3D Geometric Intelligence Core">
               <!-- Ambient Studio Light Behind Core -->
               <div class="hero-ambient-glow" aria-hidden="true"></div>
@@ -248,47 +324,14 @@
               <div id="three-hero-container" class="three-hero-container">
                 <canvas id="three-canvas"></canvas>
 
-                <!-- Elegant WebGL Fallback Graphic (active if WebGL is disabled or unavailable) -->
-                <div id="hero-webgl-fallback" class="hero-webgl-fallback" aria-hidden="true">
+                <!-- WebGL Fallback Graphic (only active if WebGL is unavailable) -->
+                <div id="hero-webgl-fallback" class="hero-webgl-fallback" aria-hidden="true" style="display: none;">
                   <svg class="fallback-geometry" viewBox="0 0 300 300" fill="none">
-                    <circle cx="150" cy="150" r="120" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
-                    <circle cx="150" cy="150" r="85" stroke="rgba(245,158,11,0.25)" stroke-width="1.2" />
-                    <polygon points="150,45 240,97 240,203 150,255 60,203 60,97" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" />
-                    <polygon points="150,75 215,112 215,188 150,225 85,188 85,112" stroke="rgba(245,158,11,0.4)" stroke-width="1.5" />
-                    <line x1="60" y1="97" x2="240" y2="203" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-                    <line x1="240" y1="97" x2="60" y2="203" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-                    <line x1="150" y1="45" x2="150" y2="255" stroke="rgba(245,158,11,0.25)" stroke-width="1" />
+                    <circle cx="150" cy="150" r="110" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
+                    <circle cx="150" cy="150" r="75" stroke="rgba(245,158,11,0.25)" stroke-width="1.2" />
                     <circle cx="150" cy="150" r="6" fill="#f59e0b" />
-                    <circle cx="150" cy="45" r="3.5" fill="#f59e0b" />
-                    <circle cx="240" cy="97" r="3.5" fill="#f59e0b" />
-                    <circle cx="240" cy="203" r="3.5" fill="#f59e0b" />
-                    <circle cx="150" cy="255" r="3.5" fill="#f59e0b" />
-                    <circle cx="60" cy="203" r="3.5" fill="#f59e0b" />
-                    <circle cx="60" cy="97" r="3.5" fill="#f59e0b" />
                   </svg>
                 </div>
-              </div>
-
-              <!-- Technical Annotations (Engineering HUD details with leader lines) -->
-              <div class="tech-annotation annotation-top-left" aria-hidden="true">
-                <span class="annotation-code">SYS.01</span>
-                <span class="annotation-text">INTELLIGENCE CORE</span>
-                <span class="annotation-line"></span>
-              </div>
-              <div class="tech-annotation annotation-top-right" aria-hidden="true">
-                <span class="annotation-code">AI / RAG</span>
-                <span class="annotation-text">SEMANTIC RETRIEVAL</span>
-                <span class="annotation-line"></span>
-              </div>
-              <div class="tech-annotation annotation-bottom-left" aria-hidden="true">
-                <span class="annotation-code">ROBOTICS</span>
-                <span class="annotation-text">HARDWARE &amp; SENSORS</span>
-                <span class="annotation-line"></span>
-              </div>
-              <div class="tech-annotation annotation-bottom-right" aria-hidden="true">
-                <span class="annotation-code">STATUS</span>
-                <span class="annotation-text">● ACTIVE</span>
-                <span class="annotation-line"></span>
               </div>
             </div>
           </div>
@@ -1299,6 +1342,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- Main Application Script -->
-  <script src="app.js?v=2.7"></script>
+  <script src="app.js?v=3.8"></script>
 </body>
 </html>
