@@ -4,6 +4,8 @@ A production-quality personal portfolio engineered for **Somenath Maity**, third
 
 Engineered with a modern **Obsidian Engineering** aesthetic, real-time **Three.js 3D WebGL** crystal visualization, interactive capability matrix, accessible project modals, and a dual **Dark/Light theme system**.
 
+🌐 **Live URL**: [https://portfolio-somenath.vercel.app](https://portfolio-somenath.vercel.app)
+
 ---
 
 ## ⚡ Core Features
